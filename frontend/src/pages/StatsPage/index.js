@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from '../../componentes/Header';
-import { Container } from 'react-bootstrap';
+import { Alert, Container } from 'react-bootstrap';
 
 import ShortnerService from '../services/shortnerService';
 
@@ -14,12 +14,23 @@ class StatsPage extends React.Component {
 
         this.state = {
             isLoading: false,
-            shortenedURL: {},
-            errorMessage: '',
+            shortenedURL:{},
+            errorMessage:'',
         }
     }
 
-    
+    async componentDidMount() {
+        const { code } = this.props.match.params;
+
+        try {
+            const service = new ShortnerService();
+            const shortenedURL = await service.getStats(code);
+
+            this.setState({ isLoading: false, shortenedURL });
+        } catch (error) {
+            this.setState({ isLoading: false, errorMessage: 'Ops, a url solicitada não existe'});
+        }
+    }
 
     render() {
         const { errorMessage, shortenedURL} = this.state;
@@ -40,7 +51,7 @@ class StatsPage extends React.Component {
                         <StatsRow>
                             <StatsBox>
                                 <b>{shortenedURL.hits}</b>
-                                <StatsBoxTitle> Visitas</StatsBoxTitle>
+                                <StatsBoxTitle>Visitas</StatsBoxTitle>
                             </StatsBox>
                             <StatsBox>
                                 <b>{shortenedURL.relativeDate}</b>
