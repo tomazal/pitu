@@ -12,7 +12,7 @@ class HomePage extends React.Component {
     render() {
         return(
             <Container>
-                <Header title="Título">Header Customizado</Header>
+                <Header>Seu novo encurtador de URL. :)</Header>
                 <FontAwesomeIcon icon="check-square" /> Pitu
             </Container>
         )
