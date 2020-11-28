@@ -2,7 +2,7 @@ import baseAPI from './api';
 
 class ShortnerService {
     constructor() {
-        this.api = baseAPI('http://locahost:3001/');
+        this.api = baseAPI('http://localhost:3001/');
     }
 
     async getLink(code) {
@@ -19,6 +19,8 @@ class ShortnerService {
     
     async generate(model) {
         const result = await this.api.post('links', model);
+
+        return result.data;
     }
     
 }
