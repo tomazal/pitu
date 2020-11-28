@@ -2,7 +2,7 @@ import React from 'react';
 import Header from '../../componentes/Header';
 import { Container } from 'react-bootstrap';
 
-import ShortnerService from '../services/shortnerService';
+import ShortnerService from '../../services/shortnerService';
 
 import { parseISO, formatRelative } from 'date-fns';
 import ptBR from 'date-fns/locale/pt-BR';

@@ -3,7 +3,8 @@ import Header from '../../componentes/Header';
 import { Container} from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { StatsContainer } from './styles';
-import ShortnerService from '../services/shortnerService';
+
+import ShortnerService from '../../services/shortnerService';
 
 class RedirectPage extends React.Component {
     constructor (props) {
