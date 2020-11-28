@@ -54,7 +54,7 @@ class HomePage extends React.Component {
                 <Header>Seu novo encurtador de URL. :)</Header>
                 <ContentContainer>
                  <Form onSubmit={this.handleSubmit}>
-                   <InputGroup>
+                   <InputGroup className="mb-3">
                      <FormControl
                        placeholder="Digite a url para encurtar"
                        defaultValue=""
@@ -70,7 +70,7 @@ class HomePage extends React.Component {
                   ) : (
                       code && (
                           <>
-                            <InputGroup>
+                            <InputGroup className="mb-3">
                                 <FormControl
                                   autoFocus={true}
                                   defaultValue={`https://pitu.tk/${code}`}
