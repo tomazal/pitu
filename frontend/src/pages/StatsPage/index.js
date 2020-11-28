@@ -1,8 +1,11 @@
 import React from 'react';
 import Header from '../../componentes/Header';
-import { Alert, Container } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 
 import ShortnerService from '../services/shortnerService';
+
+import { parseISO, formatRelative } from 'date-fns';
+import ptBR from 'date-fns/locale/pt-BR';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { StatsContainer, StatsRow, StatsBox, StatsBoxTitle } from './styles';
@@ -25,6 +28,15 @@ class StatsPage extends React.Component {
         try {
             const service = new ShortnerService();
             const shortenedURL = await service.getStats(code);
+
+            const parsedDate = parseISO(shortenedURL.updatedAt);
+            const currentDate = new Date();
+
+            const relativeDate = formatRelative(parsedDate, currentDate, {
+                locale: ptBR,
+            });
+
+            shortenedURL.relativeDate = relativeDate;
 
             this.setState({ isLoading: false, shortenedURL });
         } catch (error) {
